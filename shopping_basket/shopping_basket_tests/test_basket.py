@@ -1,4 +1,6 @@
 import unittest
+import sys
+sys.path.append('..')
 import shopping_cart
 
 class ShoppingCartTestCases(unittest.TestCase):

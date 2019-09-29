@@ -25,6 +25,16 @@ class ShoppingCartTestCases(unittest.TestCase):
 
     self.assertAlmostEqual(self.cart.subtotal, 1.20, msg='Cart subtotal not correct after removing item')
     self.assertEqual(self.cart.items['Biscuits'], 1, msg='Quantity of items not correct after removing item')
+  
+  def test_clear_basket(self):
+    self.cart.add_item('Biscuits', 3)
+    self.cart.remove_item('Biscuits', 2)
+
+    self.cart.clear_basket()
+    self.assertEqual(self.cart.items, {}, msg='Cart failed to clear')
+    self.assertEqual(self.cart.subtotal, 0, msg='Subtotal failed to reset')
+    self.assertEqual(self.cart.total, 0, msg='Total failed to reset')
+    self.assertEqual(self.cart.discount, 0, msg='Dsicount')
 
   def test_checkout_case1(self):
     self.cart.add_item('Baked Beans', 4)
